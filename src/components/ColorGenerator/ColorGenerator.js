@@ -1,13 +1,14 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { sample } from 'lodash';
+import Swatch from '../Swatch';
 
 const ColorGenerator = ({ data }) => {
   const colors = data.allColornamesJson.edges;
   const { node: randomColor } = sample(colors);
 
   return (
-    <h1>{randomColor.name}</h1>
+    <Swatch title={randomColor.name} hex={randomColor.hex} />
   );
 };
 
