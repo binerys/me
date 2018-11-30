@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
-import ColorGenerator from '../components/ColorGenerator';
-import Swatch from '../components/Swatch';
+import ColorGenerator from '../components/ColorGenerator'
 
 const IndexPage = () => (
   <Layout>

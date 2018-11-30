@@ -17,9 +17,12 @@
     "gatsby-transformer-sharp": "^2.1.8",
     "lodash": "^4.17.11",
     "react": "^16.6.3",
+    "react-clipboard.js": "^2.0.2",
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
+    "react-tooltip": "^3.9.0",
     "react-typography": "^0.16.13",
+    "styled-media-query": "^2.0.2",
     "typography": "^0.16.17"
   },
   "keywords": [

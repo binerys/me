@@ -1,2 +1,2 @@
-import ColorGenerator from './ColorGenerator';
-export default ColorGenerator;
+import ColorGenerator from './ColorGenerator'
+export default ColorGenerator

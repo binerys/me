@@ -1,16 +1,14 @@
-import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { sample } from 'lodash';
-import Swatch from '../Swatch';
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import { sample } from 'lodash'
+import Swatch from '../Swatch'
 
 const ColorGenerator = ({ data }) => {
-  const colors = data.allColornamesJson.edges;
-  const { node: randomColor } = sample(colors);
+  const colors = data.allColornamesJson.edges
+  const { node: randomColor } = sample(colors)
 
-  return (
-    <Swatch title={randomColor.name} hex={randomColor.hex} />
-  );
-};
+  return <Swatch title={randomColor.name} hex={randomColor.hex} />
+}
 
 export default props => (
   <StaticQuery

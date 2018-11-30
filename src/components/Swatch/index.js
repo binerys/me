@@ -1,3 +1,3 @@
-import Swatch from './Swatch';
+import Swatch from './Swatch'
 
-export default Swatch;
+export default Swatch

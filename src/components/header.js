@@ -30,4 +30,4 @@ const Header = ({ siteTitle }) => (
   </div>
 )
 
-export default Header;
+export default Header
