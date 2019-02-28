@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import media from 'styled-media-query'
+import { FaSync } from 'react-icons/fa'
 import Hex from './Hex'
 
 const Container = styled.div`
@@ -43,13 +44,24 @@ const Title = styled.span`
   `}
 `
 
+const HexRefresh = styled.div`
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+`
 const Swatch = props => (
   <Container color={props.hex}>
     <Spacer />
     <Footer>
       <Title>
         {props.title}
-        <Hex value={props.hex} />
+        <HexRefresh>
+          <Hex value={props.hex} />
+          {
+            props.handleRefresh &&
+              <FaSync onClick={props.handleRefresh} size={'0.5em'} />
+          }
+        </HexRefresh>
       </Title>
     </Footer>
   </Container>

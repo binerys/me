@@ -3,12 +3,32 @@ import { StaticQuery, graphql } from 'gatsby'
 import { sample } from 'lodash'
 import Swatch from '../Swatch'
 
-const ColorGenerator = ({ data }) => {
-  const colors = data.allColornamesJson.edges
-  const { node: randomColor } = sample(colors)
+class ColorGenerator extends React.Component {
+  constructor(props) {
+    super(props);
+ 
+    const colors = this.props.data.allColornamesJson.edges
+    const { node: color } = sample(colors)
+ 
+    this.state = { name: color.name, hex: color.hex };
+    this.handleRefresh = this.handleRefresh.bind(this);
+  }
 
-  return <Swatch title={randomColor.name} hex={randomColor.hex} />
+  handleRefresh () {
+    const colors = this.props.data.allColornamesJson.edges
+    const { node: color } = sample(colors)
+    this.setState({ name: color.name, hex: color.hex });
+  }
+
+  render() {
+    return <Swatch
+      title={this.state.name}
+      hex={this.state.hex}
+      handleRefresh={this.handleRefresh}
+    />
+  }
 }
+
 
 export default props => (
   <StaticQuery
