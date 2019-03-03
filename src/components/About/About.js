@@ -1,33 +1,36 @@
 import React from 'react'
-import styled from 'styled-components'
+import { StaticQuery, graphql } from 'gatsby';
+import rehypeReact from 'rehype-react'
+import { Content, Header1, Header2, Link, Strong } from './styles';
 
-const Content = styled.div`
-  width: 400px;
-  padding: 1em;
-  text-align: center;
+
+const pageQuery = graphql`
+  {
+    markdownRemark(frontmatter: { id: { eq: "about" } }) {
+      htmlAst
+    }
+  }
 `
 
-const Header = styled.h1`
-  color: ${props => props.color || 'black'};
-  text-align: center;
-`
+const About = (props) => {
+  const { hex, data } = props;
+  const markdown = data.markdownRemark;
+  const renderAst = new rehypeReact({
+    createElement: React.createElement,
+    components: {
+      h1: props => <Header1 color={hex}>{props.children}</Header1>,
+      h2: props => <Header2 color={hex}>{props.children}</Header2>,
+      strong: props => <Strong color={hex}>{props.children}</Strong>,
+      a: props => <Link color={hex} href={props.href}>{props.children}</Link>,
+    },
+  }).Compiler
 
-const Bold = styled.b`
-  color: ${props => props.color || 'black'};
-`
+  return <Content>{renderAst(markdown.htmlAst)}</Content>;
+};
 
-const About = props => (
-  <Content>
-    <Header color={props.hex}> hello! </Header>
-    <p>
-      I'm <Bold color={props.hex}>Breanna Nery</Bold>, a Filipina hailing from
-      Long Beach, CA. I currently work remotely as a{' '}
-      <Bold color={props.hex}>Software Engineer</Bold> for{' '}
-      <Bold color={props.hex}>Autodesk</Bold>. I primarily work on fullstack web
-      development using <Bold color={props.hex}>React</Bold> and{' '}
-      <Bold color={props.hex}>Ruby on Rails</Bold>.
-    </p>
-  </Content>
-)
-
-export default About
+export default props => (
+  <StaticQuery
+    query={pageQuery}
+    render={data => <About data={data} {...props} />}
+  />
+);
