@@ -1,16 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import ReactTooltip from 'react-tooltip'
 import Clipboard from 'react-clipboard.js'
 import styles from './styles.module.css'
-
-const Value = styled.div`
-  color: #222;
-  cursor: pointer;
-  font-size: 0.6em;
-  font-weight: normal;
-  margin-top: -5px;
-`
+import { Value } from './styles';
 
 const Hex = props => (
   <>
@@ -28,4 +20,4 @@ const Hex = props => (
   </>
 )
 
-export default Hex
+export default Hex;

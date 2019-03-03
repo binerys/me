@@ -1,14 +1,21 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import { sample } from 'lodash'
-import styled from 'styled-components'
 import Swatch from '../Swatch'
 import About from '../About';
+import { Content } from './styles';
 
-const Content = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+const pageQuery = graphql`
+  query {
+    allColornamesJson {
+      edges {
+        node {
+          name
+          hex
+        }
+      }
+    }
+  }
 `
 
 class ColorGenerator extends React.Component {
@@ -41,18 +48,7 @@ class ColorGenerator extends React.Component {
 
 export default props => (
   <StaticQuery
-    query={graphql`
-      query {
-        allColornamesJson {
-          edges {
-            node {
-              name
-              hex
-            }
-          }
-        }
-      }
-    `}
+    query={pageQuery}
     render={data => <ColorGenerator data={data} {...props} />}
   />
 )
