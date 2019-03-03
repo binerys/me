@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import media from 'styled-media-query'
 import { FaSync } from 'react-icons/fa'
 import Hex from './Hex'
+import styles from './styles.module.css'
 
 const Container = styled.div`
   width: 200px;
@@ -10,7 +11,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   background: ${props => props.color || 'palevioletred'};
-  border: black solid 1px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 
   ${media.greaterThan('medium')`
     width: 400px;
@@ -27,9 +29,10 @@ const Footer = styled.footer`
   height: 26%;
   background: #fff;
   padding: 5%;
+  border-radius: 0 0 7px 7px;
 `
 
-const Title = styled.span`
+const FooterText = styled.div`
   align-items: start;
   color: #222;
   display: flex;
@@ -44,25 +47,36 @@ const Title = styled.span`
   `}
 `
 
-const HexRefresh = styled.div`
+const Title = styled.span`
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+
+const HexContainer = styled.div`
   display: inline-flex;
   justify-content: space-between;
   width: 100%;
 `
+
 const Swatch = props => (
   <Container color={props.hex}>
     <Spacer />
     <Footer>
-      <Title>
-        {props.title}
-        <HexRefresh>
+      <FooterText>
+        <Title>{props.title}</Title>
+        <HexContainer>
           <Hex value={props.hex} />
-          {
-            props.handleRefresh &&
-              <FaSync onClick={props.handleRefresh} size={'0.5em'} />
-          }
-        </HexRefresh>
-      </Title>
+          {props.handleRefresh && (
+            <FaSync
+              onClick={props.handleRefresh}
+              size={'0.5em'}
+              className={styles.refresh}
+            />
+          )}
+        </HexContainer>
+      </FooterText>
     </Footer>
   </Container>
 )

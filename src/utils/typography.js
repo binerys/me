@@ -2,14 +2,16 @@ import Typography from 'typography'
 
 const typography = new Typography({
   baseFontSize: '18px',
-  headerFontFamily: [
-    'Helvetica Neue',
-    'Segoe UI',
-    'Helvetica',
-    'Arial',
-    'sans-serif',
+  headerFontFamily: ['Baloo Paaji', 'Segoe UI'],
+  bodyFontFamily: ['Nunito', 'Helvetica', 'Arial', 'sans-serif'],
+  googleFonts: [
+    { name: 'Baloo Paaji', styles: ['400'] },
+    {
+      name: 'Nunito',
+      styles: [ '400', '700']
+    }
   ],
-  bodyFontFamily: ['Helvetica', 'Arial', 'sans-serif'],
+  scaleRatio: 2.5,
 })
 
 export default typography

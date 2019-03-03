@@ -1,7 +1,15 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import { sample } from 'lodash'
+import styled from 'styled-components'
 import Swatch from '../Swatch'
+import About from '../About';
+
+const Content = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`
 
 class ColorGenerator extends React.Component {
   constructor(props) {
@@ -21,11 +29,12 @@ class ColorGenerator extends React.Component {
   }
 
   render() {
-    return <Swatch
-      title={this.state.name}
-      hex={this.state.hex}
-      handleRefresh={this.handleRefresh}
-    />
+    return (
+      <Content>
+        <Swatch title={this.state.name} hex={this.state.hex} handleRefresh={this.handleRefresh} />
+        <About hex={this.state.hex} />
+      </Content>
+    );
   }
 }
 
