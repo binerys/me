@@ -2,13 +2,13 @@
 id: "about"
 ---
 
-# hello!
+# 👩🏽‍💻 hello!
 
 My name is **Breanna Nery**, a Filipina from Long Beach, CA.
 I currently work remotely 🏡 as a **Software Engineer** for **Autodesk**. I primarily work on fullstack web development using **React** and **Ruby on Rails**.
 
 This color generator was inspired by my lifelong appreciation of colors and my childhood hobby of collecting paint swatches.
-I hope you'll find a color you appreciate as well 💕
+I hope you'll find a color you appreciate 💕
 
 ✨ Colors provided by the [color-names](https://github.com/meodai/color-names) dictionary.
 

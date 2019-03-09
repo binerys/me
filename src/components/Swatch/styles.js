@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import media from 'styled-media-query'
 
 export const Container = styled.div`
-  width: 200px;
-  min-height: 246px;
+  width: 300px;
+  min-height: 346px;
   display: flex;
   flex-direction: column;
   background: ${props => props.color || 'palevioletred'};
@@ -29,7 +29,7 @@ export const FooterText = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Chivo' !important;
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: 800;
   text-transform: uppercase;
 
