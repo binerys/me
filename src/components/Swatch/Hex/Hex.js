@@ -1,18 +1,19 @@
 import React from 'react'
 import ReactTooltip from 'react-tooltip'
-import Clipboard from 'react-clipboard.js'
 import styles from './styles.module.css'
 import { Value } from './styles';
 
 const Hex = props => {
   // Workaround for window not defined error
   if (typeof window !== 'undefined') {
+    const ReactClipboard = require('react-clipboard.js');
+
     return (
       <>
         <Value data-tip="Copied!" data-event="click focus">
-          <Clipboard component="a" data-clipboard-text={props.value}>
+          <ReactClipboard.default component="a" data-clipboard-text={props.value}>
             {props.value}
-          </Clipboard>
+          </ReactClipboard.default>
         </Value>
         <ReactTooltip
           className={styles.tooltip}
@@ -24,7 +25,7 @@ const Hex = props => {
     );
   } else {
     return (
-      <> props.value </>
+      <> {props.value} </>
     );
   }
 };
