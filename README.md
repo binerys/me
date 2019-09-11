@@ -11,3 +11,5 @@ Some firsts:
 - [ ] Better code organization
 - [ ] Tooltip on hover for long color names
 - [ ] A blog???
+- [x] Adjust background + color for proper color contrast (twitter suggestion)
+- [ ] Proper error state if all colors fail to load
