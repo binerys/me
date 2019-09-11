@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby';
 import rehypeReact from 'rehype-react'
 import { Content, Header1, Header2, Link, Strong } from './styles';
-
+import { useDarkTheme } from '../../utils/colors';
 
 const pageQuery = graphql`
   {
@@ -24,8 +24,8 @@ const About = (props) => {
       a: props => <Link color={hex} href={props.href}>{props.children}</Link>,
     },
   }).Compiler
-
-  return <Content>{renderAst(markdown.htmlAst)}</Content>;
+ 
+  return <Content useDarkTheme={useDarkTheme(hex)}>{renderAst(markdown.htmlAst)}</Content>;
 };
 
 export default props => (
