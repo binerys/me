@@ -1,11 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
-
-export const Body = createGlobalStyle`
-  body {
-    background-color: ${props => (props.useDarkTheme ? '#2f2f2f' : '#FFF')};
-    transition: background-color 500ms linear;
-  }
-`
+import styled from 'styled-components'
 
 export const Content = styled.div`
   display: flex;

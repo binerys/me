@@ -1,8 +1,7 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import media from 'styled-media-query'
 
 export const Content = styled.div`
-  color: ${props => props.useDarkTheme ? '#FFF' : '#222'};
   width: 400px;
   padding: 1em;
   margin-top: 30px;
