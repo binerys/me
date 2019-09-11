@@ -23,11 +23,18 @@ class ColorGenerator extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      hex: null,
+      name: null
+    }
+    this.handleRefresh = this.handleRefresh.bind(this)
+  }
+
+  componentDidMount() {
     const colors = this.props.data.allColornamesJson.edges
     const { node: color } = sample(colors)
 
-    this.state = { name: color.name, hex: color.hex }
-    this.handleRefresh = this.handleRefresh.bind(this)
+    this.setState({ name: color.name, hex: color.hex });
   }
 
   handleRefresh() {
@@ -37,19 +44,26 @@ class ColorGenerator extends React.Component {
   }
 
   render() {
-   return (
-     <>
-       <Body useDarkTheme={useDarkTheme(this.state.hex)} />
-       <Content>
-         <Swatch
-           title={this.state.name}
-           hex={this.state.hex}
-           handleRefresh={this.handleRefresh}
-         />
-         <About hex={this.state.hex} />
-       </Content>
-     </>
-    )
+    const { hex, name } = this.state;
+
+    if (hex) {
+      return (
+        <>
+          <Body useDarkTheme={useDarkTheme(hex)} />
+          <Content>
+            <Swatch
+              title={name}
+              hex={hex}
+              handleRefresh={this.handleRefresh}
+            />
+            <About hex={hex} />
+          </Content>
+        </>
+      )
+    } else {
+      return null;
+    }
+    
   }
 }
 
