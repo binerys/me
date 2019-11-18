@@ -4,6 +4,7 @@ import { sample } from 'lodash'
 import { useDarkTheme } from '../../utils/colors'
 import Swatch from '../Swatch'
 import About from '../About';
+import Navigation from '../Navigation'
 import { Body, Content } from './styles';
 
 const pageQuery = graphql`
@@ -50,6 +51,7 @@ class ColorGenerator extends React.Component {
       return (
         <>
           <Body useDarkTheme={useDarkTheme(hex)} />
+          <Navigation hex={hex}/>
           <Content>
             <Swatch
               title={name}
