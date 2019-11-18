@@ -1,3 +1,7 @@
+// RGB => Hex conversion
+// from: https://stackoverflow.com/a/43122028
+export const toHex = x => '#' + x.match(/\d+/g).map(z => ((+z < 16) ? '0' : '') + ((+z > 255) ? 255 : +z).toString(16)).join('');
+
 export const useDarkTheme = (hex) => {
   // from: https://24ways.org/2010/calculating-color-contrast
   hex = hex.replace('#', '')

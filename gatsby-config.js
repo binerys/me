@@ -1,3 +1,5 @@
+require('dotenv').config({path: '.env'})
+
 module.exports = {
   siteMetadata: {
     title: 'Breanna Nery',
@@ -6,16 +8,16 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'gatsby-starter-default',
         short_name: 'bree',
@@ -28,14 +30,14 @@ module.exports = {
     },
     'gatsby-transformer-json',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `data`,
+        name: 'data',
         path: `${__dirname}/src/data/`,
-        ignore: [`**/\.*`], // ignore files starting with a dot
+        ignore: ['**/.*'], // ignore files starting with a dot
       },
     },
-    `gatsby-transformer-remark`,
+    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-plugin-typography',
       options: {
@@ -45,9 +47,19 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: [
-          `chivo`,
-        ],
+        fonts: ['chivo'],
+      },
+    },
+    {
+      resolve: 'gatsby-source-spotify',
+      options: {
+        clientId: process.env.SPOTIFY_CLIENT_ID,
+        clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+        refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+
+        fetchPlaylists: true,
+        fetchRecent: true,
+        timeRanges: ['short_term', 'long_term', 'medium_term'],
       },
     },
   ],
